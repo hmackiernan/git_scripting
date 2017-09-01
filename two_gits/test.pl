@@ -6,17 +6,17 @@ use Data::Dumper;
 my $home = getcwd;
 $ENV{'GIT_CONFIG'}  = ".gitconfig";
 
-my @dirs = qw(alice bob);
+my @users = qw(alice bob);
 
-foreach my $dir (@dirs) {
-    mkpath ($dir);
+foreach my $user (@users) {
+    mkpath ($user);
 
 }
 
-foreach my $dir (@dirs) {
-    chdir $dir;
+foreach my $user_dir (@users) {
+    chdir $user_dir;
     print `pwd`;
-    my @ret = `git config --file=.gitconfig user.name $dir`;
+    my @ret = `git config --file=.gitconfig user.name $user_dir`;
     print Dumper(\@ret);
 
     my @ret = `git config --list`;
